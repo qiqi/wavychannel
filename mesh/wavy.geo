@@ -6,9 +6,9 @@ R = 0.25 / Sin(phi);
 Ri = R - alpha / 2;
 Ro = R + alpha / 2;
 
-nx = 60;
-ny = 24;
-nz = 38;
+nx = 120;
+ny = 40;
+nz = 50;
 
 Point(1) = {0, 0, 0};
 Point(2) = {1/2, (Ro+Ri)*Cos(phi), 0};
