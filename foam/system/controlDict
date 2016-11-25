@@ -49,28 +49,51 @@ runTimeModifiable true;
 
 functions
 {
-    fieldAverage
+    pTDrop
     {
-        type            fieldAverage;
+        type            fieldValueDelta;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    writeTime;
+        
+        operation       subtract;
+        
+        writeControl    timeStep;
+        writeInterval   1
+        log             false;
+        
+        region1
+        {
+			type            surfaceRegion;                                                   
+			libs            ("libfieldFunctionObjects.so");                                  
 
-        fields
-        (    
-            T
-            {
-                mean        on;
-                prime2Mean  off;
-                base        time;
-            }
+			writeControl    timeStep;                                                        
+			writeInterval   1;                                                               
+			                                                                                 
+			writeFields     false;                                                           
+			log             false;                                                           
 
-            p
-            {
-                mean        on;
-                prime2Mean  off;
-                base        time;
-            }
-        );
+            operation       areaAverage;
+            fields          (p T);
+
+            regionType      patch;
+            name            inlet;
+        }
+        region2
+        {
+			type            surfaceRegion;                                                   
+			libs            ("libfieldFunctionObjects.so");                                  
+
+			writeControl    timeStep;                                                        
+			writeInterval   1;                                                               
+			                                                                                 
+			writeFields     false;                                                           
+			log             false;                                                           
+
+            operation       areaAverage;
+            fields          (p T);
+
+            regionType      patch;
+            name            outlet;
+        }
     }
 }
 
