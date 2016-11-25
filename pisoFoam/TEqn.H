@@ -5,7 +5,7 @@ double Pr = 5.0;
 fvScalarMatrix TEqn
 (
     fvm::ddt(T) + fvm::div(phi, T)
-  - fvm::laplacian(turbulence->nu() / Pr, T)
+  - 1./Pr * fvm::laplacian(turbulence->nu(), T)
  ==
     fvOptions(T)
 );

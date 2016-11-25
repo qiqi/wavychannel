@@ -68,7 +68,6 @@ int main(int argc, char *argv[])
 
         // Pressure-velocity PISO corrector
         {
-            #include "TEqn.H"
             #include "UEqn.H"
 
             // --- PISO loop
@@ -77,6 +76,8 @@ int main(int argc, char *argv[])
                 #include "pEqn.H"
             }
         }
+
+        #include "TEqn.H"
 
         laminarTransport.correct();
         turbulence->correct();
