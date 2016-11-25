@@ -16,17 +16,17 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 310;
+internalField   uniform 1;
 
 boundaryField
 {
     inlet
     {
         type            mapped;
-        value           uniform 310;
+        value           uniform 1;
         interpolationScheme cell;
         setAverage          true;
-        average             310;
+        average             1;
     }
     outlet
     {
@@ -35,7 +35,7 @@ boundaryField
     wall
     {
         type            fixedValue;
-        value           300;
+        value           0;
     }
 }
 
