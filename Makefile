@@ -11,14 +11,14 @@ mesh/wavy.geo:	mesh/wavy.geo.template mesh/geo.py params/grid params/geom
 mesh/wavy.msh:	mesh/wavy.geo
 	cd mesh; gmsh -3 wavy.geo > gmsh.out
 
-foam/constant/polyMesh/boundary:	mesh/wavy.msh foam/boundary.py
-	cd foam; gmshToFoam ../mesh/wavy.msh > gmshToFoam.out; python boundary.py
+foam/constant/polyMesh/boundary:	mesh/wavy.msh foam/setup.py
+	cd foam; gmshToFoam ../mesh/wavy.msh > gmshToFoam.out; python setup.py
 
-foam/system/decomposeParDict:	foam/decomposePar.py params/mpi_size
-	cd foam; python decomposePar.py
+foam/system/decomposeParDict:	foam/setup.py params/mpi_size
+	cd foam; python setup.py
 
-foam/system/controlDict:	foam/controlDict.py
-	cd foam; python controlDict.py
+foam/system/controlDict:	foam/setup.py
+	cd foam; python setup.py
 
 foam/processor0/constant/polyMesh/boundary:	foam/constant/polyMesh/boundary foam/system/decomposeParDict
 	cd foam; rm -rf processor*; decomposePar > decomposePar.out
