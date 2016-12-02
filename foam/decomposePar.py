@@ -21,7 +21,7 @@ numberOfSubdomains {0};
 method          scotch;
 
 // ************************************************************************* //
-'''.format(open('../mpi_size').read())
+'''.format(open('../params/mpi_size').read())
 
 with open('system/decomposeParDict', 'wt') as f:
     f.write(content)
