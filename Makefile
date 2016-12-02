@@ -17,7 +17,7 @@ foam/constant/polyMesh/boundary:	mesh/wavy.msh foam/setup.py
 foam/system/decomposeParDict:	foam/setup.py params/mpi_size
 	cd foam; python setup.py
 
-foam/system/controlDict:	foam/setup.py params/endTim params/physics
+foam/system/controlDict:	foam/setup.py params/endTime params/physics
 	cd foam; python setup.py
 
 foam/processor0/constant/polyMesh/boundary:	foam/constant/polyMesh/boundary foam/system/decomposeParDict
