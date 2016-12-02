@@ -2,13 +2,29 @@ import re
 
 boundary_file = 'constant/polyMesh/boundary'
 boundary = open(boundary_file).read()
+# subs = {
+#      'inlet': '''
+#         type            mappedPatch;
+#         sampleMode      nearestPatchFace;
+#         samplePatch     outlet;
+#         offsetMode      uniform;
+#         offset          (1 0 0);''',
+#      'outlet': '''
+#         type            mappedPatch;
+#         sampleMode      nearestPatchFace;
+#         samplePatch     inlet;
+#         offsetMode      uniform;
+#         offset          (-1 0 0);''',
+#      'wall': '''
+#         type            wall;'''
+# }
 subs = {
      'inlet': '''
-        type            mappedPatch;
-        sampleMode      nearestPatchFace;
-        samplePatch     outlet;
-        offsetMode      uniform;
-        offset          (1 0 0);''',
+        type            cyclic;
+        neighbourPatch  outlet;''',
+     'outlet': '''
+        type            cyclic;
+        neighbourPatch  inlet;''',
      'wall': '''
         type            wall;'''
 }

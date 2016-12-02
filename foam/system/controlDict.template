@@ -10,60 +10,63 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      fvSolution;
+    object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
+libs            ("libOpenFOAM.so" "libfieldFunctionObjects.so");
+
+application     pisoFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         1000;
+
+deltaT          0.01;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  18;
+
+writeCompression compressed;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+
+functions
 {
-    p
+    probes
     {
-        solver          GAMG;
-        tolerance       1e-7;
-        relTol          0.01;
+        type            probes;
+        libs ("libsampling.so");
+        axis    xyz;
+        probeLocations
+        (
+            $POINTS
+        );
 
-        smoother        GaussSeidel;
-
-
-        nCellsInCoarsestLevel 50;
+        writeControl    timeStep;
+        writeInterval   1;
+        fields
+        (
+            p T U
+        );
+        interpolationScheme cellPoint; 
     }
-
-    pFinal
-    {
-        $p;
-        relTol          0;
-    }
-
-    U
-    {
-        solver          smoothSolver;
-        smoother        symGaussSeidel;
-        tolerance       1e-8;
-        relTol          0;
-    }
-
-    T
-    {
-        solver          PBiCG;
-        preconditioner  diagonal;
-        tolerance       1e-10;
-        relTol          1e-6;
-    }
-}
-
-PISO
-{
-    nCorrectors     3;
-    nNonOrthogonalCorrectors 0;
-    pRefCell  0;
-    pRefValue 0;
-}
-
-relaxationFactors
-{
-    "U.*"               1;
-    "nuTilda.*"         1;
 }
 
 

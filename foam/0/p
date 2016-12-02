@@ -22,13 +22,12 @@ boundaryField
 {
     inlet
     {
-        type            zeroGradient;
+        type            cyclic;
     }
 
     outlet
     {
-        type            fixedValue;
-        value           uniform 0;
+        type            cyclic;
     }
 
     wall

@@ -22,20 +22,22 @@ boundaryField
 {
     inlet
     {
-        type            mapped;
-        value           uniform 1;
-        interpolationScheme cell;
-        setAverage          true;
-        average             1;
+        type            fixedJump;
+        patchType       cyclic;
+        jump            uniform 1;
+        value           $internalField;
     }
     outlet
     {
-        type            zeroGradient;
+        type            fixedJump;
+        patchType       cyclic;
+        jump            uniform -1;
+        value           $internalField;
     }
     wall
     {
         type            fixedValue;
-        value           0;
+        value           uniform 0;
     }
 }
 

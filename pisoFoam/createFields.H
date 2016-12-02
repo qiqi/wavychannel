@@ -40,6 +40,43 @@ volVectorField U
     mesh
 );
 
+volVectorField drivingForce
+(
+    IOobject
+    (
+        "drivingForce",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedVector(
+        "drivingForce",
+        dimensionSet(0,1,-2,0,0,0,0),
+        Foam::vector(1,0,0)
+    )
+);
+
+volScalarField heating
+(
+    IOobject
+    (
+        "heating",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedScalar(
+        "heating",
+        dimensionSet(0,0,-1,1,0,0,0),
+        Foam::scalar(1)
+    )
+);
+
+
 #include "createPhi.H"
 
 

@@ -6,6 +6,7 @@ fvScalarMatrix TEqn
 (
     fvm::ddt(T) + fvm::div(phi, T)
   - 1./Pr * fvm::laplacian(turbulence->nu(), T)
+  - heating
  ==
     fvOptions(T)
 );

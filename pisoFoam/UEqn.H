@@ -7,6 +7,7 @@ fvVectorMatrix UEqn
     fvm::ddt(U) + fvm::div(phi, U)
   + MRF.DDt(U)
   + turbulence->divDevReff(U)
+  - drivingForce
  ==
     fvOptions(U)
 );
