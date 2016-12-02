@@ -1,14 +1,14 @@
-alpha = 0.1;
-beta = 0.5;
-phi = Pi / 3;
+alpha = $ALPHA;
+beta = $BETA;
+phi = $PHI;
 
 R = 0.25 / Sin(phi);
 Ri = R - alpha / 2;
 Ro = R + alpha / 2;
 
-nx = 120;
-ny = 40;
-nz = 50;
+nx = $NX;
+ny = $NY;
+nz = $NZ;
 
 Point(1) = {0, 0, 0};
 Point(2) = {1/2, (Ro+Ri)*Cos(phi), 0};
