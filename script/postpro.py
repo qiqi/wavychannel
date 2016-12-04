@@ -7,6 +7,7 @@ foam_path = os.path.join(base_path, 'foam')
 
 nu = loadtxt(os.path.join(base_path, 'params/physics'))
 alpha, beta, phi = loadtxt(os.path.join(base_path, 'params/geom'))
+nx, ny, nz = loadtxt(os.path.join(base_path, 'params/grid'), dtype=int)
 
 D = 2 * alpha * (alpha/beta) / (alpha + alpha/beta)  # Hydrolic diameter
 
@@ -36,10 +37,7 @@ for T, P, U in zip(fT, fP, fU):
     f = dp * (2 * D) / Umean**2
     print(t, Re, f * Re)
 
-t = pt[:,0]
-dp = pt[:,1]
-dt = pt[:,2]
-
-fRe = dp * 2 * D * Re
-plot(t, fRe)
-ylim([50, 100])
+figure()
+plot(T.reshape([ny, nz]))
+figure()
+plot(U.reshape([ny, nz]))
