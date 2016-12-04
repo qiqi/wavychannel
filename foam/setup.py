@@ -25,7 +25,7 @@ def controlDict():
 
 def boundary():
     boundary_file = 'constant/polyMesh/boundary'
-    if not os.path.exist(boundary_file):
+    if not os.path.exists(boundary_file):
         return
     boundary = open(boundary_file).read()
     subs = {
