@@ -80,7 +80,7 @@ def decomposePar():
 def transportProperties():
     template = string.Template(
             open('constant/transportProperties.template').read())
-    nu, = loadtxt('../params/physics')
+    nu = loadtxt('../params/physics')
     with open('constant/transportProperties', 'wt') as f:
         f.write(template.substitute(
             NU=nu
