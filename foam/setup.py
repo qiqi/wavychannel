@@ -1,3 +1,4 @@
+import os
 import re
 import string
 from numpy import *
@@ -24,6 +25,8 @@ def controlDict():
 
 def boundary():
     boundary_file = 'constant/polyMesh/boundary'
+    if not os.path.exist(boundary_file):
+        return
     boundary = open(boundary_file).read()
     subs = {
          'inlet': '''
