@@ -3,19 +3,18 @@ import sys
 from numpy import *
 
 base_path = os.path.abspath(sys.argv[1])
+foam_path = os.path.join(base_path, 'foam')
 
-for line in open(os.path.join(base_path, 'constant', 'transportProperties')):
-    line = line.strip()
-    if line.startswith('nu ') and line.endswith(';'):
-        nu = float(line[:-1].split()[-1])
+nu = loadtxt(os.path.join(base_path, 'params/physics'))
+alpha, beta, phi = loadtxt(os.path.join(base_path, 'params/geom'))
 
-D = 2 * 0.1 * 0.2 / (0.1 + 0.2)  # Hydrolic diameter
+D = 2 * alpha * (alpha/beta) / (alpha + alpha/beta)  # Hydrolic diameter
 
 dp = 1
 dT = 1
 
 fT, fP, fU = (
-        open(os.path.join(base_path, 'postProcessing', 'probes', '0', f))
+        open(os.path.join(foam_path, 'postProcessing', 'probes', '0', f))
         for f in ('T', 'p', 'U'))
 for T, P, U in zip(fT, fP, fU):
     T = T.strip()

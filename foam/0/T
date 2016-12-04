@@ -22,17 +22,11 @@ boundaryField
 {
     inlet
     {
-        type            fixedJump;
-        patchType       cyclic;
-        jump            uniform 1;
-        value           $internalField;
+        type            cyclic;
     }
     outlet
     {
-        type            fixedJump;
-        patchType       cyclic;
-        jump            uniform -1;
-        value           $internalField;
+        type            cyclic;
     }
     wall
     {
