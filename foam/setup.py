@@ -6,8 +6,9 @@ from numpy import *
 def controlDict():
     template = string.Template(open('system/controlDict.template').read())
     nx, ny, nz = loadtxt('../params/grid')
-    y = ((arange(ny, dtype=float) + 0.5) / ny - 0.5) * 0.1
-    z = (arange(nz, dtype=float) + 0.5) / nz * 0.2
+    alpha, beta, phi = loadtxt('../params/geom')
+    y = ((arange(ny, dtype=float) + 0.5) / ny - 0.5) * alpha
+    z = (arange(nz, dtype=float) + 0.5) / nz * alpha / beta
     y, z = meshgrid(y, z, indexing='ij')
     x = 0.5 * ones(y.size)
     y = ravel(y)
