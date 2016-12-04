@@ -11,7 +11,7 @@ mesh/wavy.geo:	mesh/wavy.geo.template mesh/geo.py params/grid params/geom
 mesh/wavy.msh:	mesh/wavy.geo
 	cd mesh; gmsh -3 wavy.geo > gmsh.out
 
-foam/constant/polyMesh/boundary:	mesh/wavy.msh foam/setup.py
+foam/constant/polyMesh/boundary:	mesh/wavy.msh foam/setup.py foam/system/controlDict
 	cd foam; gmshToFoam ../mesh/wavy.msh > gmshToFoam.out; python setup.py
 
 foam/system/decomposeParDict:	foam/setup.py params/mpi_size
