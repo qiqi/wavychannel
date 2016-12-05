@@ -19,7 +19,6 @@ args = parser.parse_args()
 my_path = os.path.dirname(os.path.abspath(__file__))
 git_path = os.path.abspath(os.path.join(my_path, '..'))
 
-assert not os.path.exists(args.path)
 subprocess.check_call(['git', 'clone', git_path, args.path])
 params = os.path.join(args.path, 'params')
 

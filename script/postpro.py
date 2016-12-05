@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 from numpy import *
@@ -36,8 +37,3 @@ for T, P, U in zip(fT, fP, fU):
     Re = Umean * D / nu
     f = dp * (2 * D) / Umean**2
     print(t, Re, f * Re)
-
-figure()
-plot(T.reshape([ny, nz]))
-figure()
-plot(U.reshape([ny, nz]))
