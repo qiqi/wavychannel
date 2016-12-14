@@ -28,6 +28,8 @@ endTime         $ENDTIME;
 
 deltaT          0.01;
 
+purgeWrite      1;
+
 writeControl    timeStep;
 
 writeInterval   100;
