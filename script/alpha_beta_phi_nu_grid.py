@@ -49,7 +49,7 @@ for alpha, beta, phi_over_pi, nu in itertools.product(Alpha, Beta, Phi_over_pi, 
             T = str(int(T) + 10)
             print('Running further to T = ', T)
             sys.stdout.flush()
-        subprocess.check_call([
-            'python', 'runcase.py', path,
-            alpha, beta, phi_over_pi,
-            nu, T, nx, ny, nz])
+            subprocess.check_call([
+                'python', 'runcase.py', path,
+                alpha, beta, phi_over_pi,
+                nu, T, nx, ny, nz])
